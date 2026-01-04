@@ -31,4 +31,36 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
+    // Initialize Bootstrap tooltips
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+
+    // Contact link with mailto
+    const contactLink = document.getElementById('contactLink');
+    if (contactLink) {
+        contactLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            const email = 'mcwhorter.britain@gmail.com';
+            const subject = 'Music Lesson Inquiry';
+            const body = `Hi Britain,
+
+I'm interested in learning more about music lessons.
+
+My goals are:
+
+
+My experience level:
+
+
+Preferred lesson schedule:
+
+
+Thanks!`;
+            
+            const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = mailtoLink;
+        });
+    }
+
 });
